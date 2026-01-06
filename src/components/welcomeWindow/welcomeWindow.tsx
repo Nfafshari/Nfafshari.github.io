@@ -14,7 +14,7 @@ export default function WelcomeWindow (props: WelcomeWindowProps) {
             padding='2px'
         >
             <TitleBar 
-                title='Welcome'
+                title='Welcome!'
                 id='Welcome-titlebar'
                 active={props.activeWindow}
             >

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
-import { TaskBar, List, Input, Frame, TitleBar } from '@react95/core';
+import { TaskBar, List, Button } from '@react95/core';
 import { ReaderClosed, WindowsExplorer, Earth, Wordpad, Computer, RecycleEmpty, Mdisp321, Wintrust103 } from '@react95/icons';
 
 import Draggable from 'react-draggable';
@@ -19,13 +19,25 @@ import WelcomeWindow from './welcomeWindow/welcomeWindow';
 
 export default function App() {
     const [activeWindow, setActiveWindow] = useState<boolean>(true);
+    const [crtFilter, setCrtFilter] = useState<'crt' | ''>('crt');
+    const [crtFilterToggleState, setCrtFilterToggleState] = useState<boolean>(true);
 
     const nodeRef = useRef(null);
+
+    function onCrtToggleClick () {
+        if (crtFilterToggleState) {
+            setCrtFilterToggleState(false);
+            setCrtFilter('');
+        } else {
+            setCrtFilterToggleState(true);
+            setCrtFilter('crt');
+        }
+    }
 
     return (
         <div 
             id='Background' 
-            className='crt relative w-screen h-screen bg-cover bg-center bg-no-repeat overflow-hidden z-0' 
+            className={`${crtFilter} relative w-screen h-screen bg-cover bg-center bg-no-repeat overflow-hidden z-0`}
             style={{ backgroundImage: `url(${WindowsCloudsImg})` }}
         >
             <div 
@@ -185,6 +197,15 @@ export default function App() {
                     </div>
                 </Draggable>
             </div>
+
+            <Button
+                className='absolute top-2 right-2 z-10 font-extrabold text-[16px]'
+                onClick={() => {
+                    onCrtToggleClick()
+                }}
+            >
+                <span className='text-red-500'>R</span><span className='text-green-600'>G</span><span className='text-blue-600'>B</span>
+            </Button>
 
             <TaskBar
                 className='App-taskBar-size'
