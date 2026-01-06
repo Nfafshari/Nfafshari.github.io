@@ -1,80 +1,206 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-import headShot1 from '../assets/nathen_headshot_1.jpg';
-import linkedInImg from '../assets/LinkedIn_icon.svg.png';
-import gmailImg from '../assets/gmail_icon.png';
-import githubImg from '../assets/github_icon.png';
-import HoveringLetters from './hoveringLetters/hoveringLetters';
-import TiltContainer from './tiltContainer/tiltContainer';
+import { TaskBar, List, Input, Frame, TitleBar } from '@react95/core';
+import { ReaderClosed, WindowsExplorer, Earth, Wordpad, Computer, RecycleEmpty, Mdisp321, Wintrust103 } from '@react95/icons';
 
+import Draggable from 'react-draggable';
+
+import HeadShotImg from '../assets/nathen_headshot.jpg';
+import WindowsCloudsImg from '../assets/windows_clouds.jpg';
+import LinkedInImg from '../assets/linkedin_pixel_logo_icon.png';
+import GithubImg from '../assets/github_pixel_icon.png';
+import TopographyImg from '../assets/topography-micron.svg';
+
+import '@react95/core/GlobalStyle';
+import '@react95/core/themes/win95.css';
+import '@react95/icons/icons.css';
 import './app.css';
+import WelcomeWindow from './welcomeWindow/welcomeWindow';
 
 export default function App() {
-    const sizeMap = {
-        "xs": "text-xs",
-        "sm": "text-sm",
-        "base": "text-base",
-        "lg": "text-lg",
-        "xl": "text-xl",
-        "2xl": "text-2xl",
-        "3xl": "text-3xl",
-        "4xl": "text-4xl",
-        "5xl": "text-5xl",
-        "6xl": "text-6xl",
-        "7xl": "text-7xl",
-        "8xl": "text-8xl",
-        "9xl": "text-9xl",
-    }
+    const [activeWindow, setActiveWindow] = useState<boolean>(true);
+
+    const nodeRef = useRef(null);
 
     return (
-        <div className='flex w-screen'>
-            <div id='Sidebar' className='bg-slate-400 w-1/4 h-screen flex flex-col items-center shadow-xl shadow-black z-50'>
-                pst. move your cursor over me
-                <TiltContainer className='flex items-center justify-center h-1/3' constraint={18} perspective={400} shadow={true}>
-                    <img src={headShot1} className='w-3/4 rounded-xl object-cover shadow-xl shadow-gray-600' alt='Headshot photo of Nathen Afshari'/>
-                </TiltContainer>
-                <div>
-                    <ul className='text-slate-600 text-4xl underline m-5'>
-                        <li className='mb-5 cursor-pointer'>
-                            Experience
-                        </li>
-                        <li className='mb-5 cursor-pointer'>
-                            Education
-                        </li>
-                        <li className='mb-5 cursor-pointer'>
-                            School Projects
-                        </li>
-                        <li className='cursor-pointer'>
-                            Hobby Projects
-                        </li>
-                    </ul>
-                    <div className='flex flex-row'>
-                        <a href='https://www.linkedin.com/in/nathen-afshari-364570294' target='_blank'>
-                            <img className='w-10 ml-12 mt-5 mr-5 aspect-square cursor-pointer' src={linkedInImg} alt='linkedIn icon image quick link'/>
-                        </a>
-                        <a href='mailto:nathen.afshari@gmail.com'>
-                            <img className='w-10 mt-5 mr-5 aspect-square cursor-pointer' src={gmailImg} alt='Gmail icon image quick link'/>
-                        </a>
-                        <a href='https://github.com/Nfafshari' target='_blank'>
-                            <img className='w-10 mt-5 aspect-square cursor-pointer' src={githubImg} alt='Github icon image quick link'/>
-                        </a>
+        <div 
+            id='Background' 
+            className='crt relative w-screen h-screen bg-cover bg-center bg-no-repeat overflow-hidden z-0' 
+            style={{ backgroundImage: `url(${WindowsCloudsImg})` }}
+        >
+            <div 
+                id='Drag-zone'
+                className='App-dragZone-size'
+            >
+                <Draggable 
+                    nodeRef={nodeRef}
+                    bounds='parent'
+                    defaultPosition={{x: 600, y: 100}}
+                    handle='#Welcome-titlebar'
+                >
+                    <div
+                        ref={nodeRef}
+                        className='absolute h-5 w-[500px] z-20'
+                    >
+                        <WelcomeWindow 
+                            activeWindow={activeWindow}
+                        />
                     </div>
-                </div>
-            </div>
-            <div id='VerticalSplit' className='h-auto w-0.5 bg-gray-200 rounded-full gradient' />
-            <div className='bg-white w-3/4 h-screen'>
-                <div className='flex flex-row mt-5 justify-center position: static'>
-                    <HoveringLetters text='Nathen' textSize={sizeMap['7xl']}/>
-                    <HoveringLetters text='Afshari' textSize={sizeMap['7xl']}/>
-                    <div className='ribbon -right-1 top-14 select-none'>
-                        Responsive Page!
+                </Draggable>
+
+                <Draggable 
+                    nodeRef={nodeRef}
+                    bounds='parent'
+                    defaultPosition={{x: 0, y: 0}}
+                >
+                    <div 
+                        ref={nodeRef}
+                        className='absolute h-20 w-20 z-10 m-1'
+                    >
+                        <div
+                            className='flex flex-col w-full h-full items-center justify-center text-center cursor-pointer'
+                        >
+                            <Earth variant="32x32_4"/>
+                            <p className='App-shortcut-text-spacing'> Welcome! </p>
+                        </div>
                     </div>
-                </div>
-                <div className='w-auto h-0.5 bg-gray-400 rounded-full ml-10 mr-10 mt-5 gradient'/>
-                <div className='text-center mt-10'>
-                    Hi, I am Nathen Afshari. I am a recent college grad from the University of North Dakota with a Bachelor's Degree in Computer Science.
-                </div>
+                </Draggable>
+                <Draggable 
+                    nodeRef={nodeRef}
+                    bounds='parent'
+                    defaultPosition={{x: 0, y: 70}}
+                >
+                    <div 
+                        ref={nodeRef}
+                        className='absolute h-20 w-20 z-10 m-1'
+                    >
+                        <div
+                            className='flex flex-col w-full h-full items-center justify-center text-center cursor-pointer'
+                        >
+                            <Computer variant="32x32_4"/>
+                            <p className='App-shortcut-text-spacing'> Experience </p>
+                        </div>
+                    </div>
+                </Draggable>
+                <Draggable 
+                    nodeRef={nodeRef}
+                    bounds='parent'
+                    defaultPosition={{x: 0, y: 140}}
+                >
+                    <div 
+                        ref={nodeRef}
+                        className='absolute h-20 w-20 z-10 m-1'
+                    >
+                        <div
+                            className='flex flex-col w-full h-full items-center justify-center text-center cursor-pointer'
+                        >
+                            <Wintrust103 variant="32x32_4"/>
+                            <p className='App-shortcut-text-spacing'> Education </p>
+                        </div>
+                    </div>
+                </Draggable>
+                <Draggable 
+                    nodeRef={nodeRef}
+                    bounds='parent'
+                    defaultPosition={{x: 0, y: 210}}
+                >
+                    <div 
+                        ref={nodeRef}
+                        className='absolute h-20 w-20 z-10 m-1'
+                    >
+                        <div
+                            className='flex flex-col w-full h-full items-center justify-center text-center cursor-pointer'
+                        >
+                            <Wordpad variant="32x32_4"/>
+                            <p className='App-shortcut-text-spacing'> School Projects </p>
+                        </div>
+                    </div>
+                </Draggable>
+                <Draggable 
+                    nodeRef={nodeRef}
+                    bounds='parent'
+                    defaultPosition={{x: 0, y: 280}}
+                >
+                    <div 
+                        ref={nodeRef}
+                        className='absolute h-20 w-20 z-10 m-1'
+                    >
+                        <div
+                            className='flex flex-col w-full h-full items-center justify-center text-center cursor-pointer'
+                        >
+                            <Mdisp321 variant="32x32_4"/>
+                            <p className='App-shortcut-text-spacing'> Hobby Projects </p>
+                        </div>
+                    </div>
+                </Draggable>
+                <Draggable 
+                    nodeRef={nodeRef}
+                    bounds='parent'
+                    defaultPosition={{x: 0, y: 500}}
+                >
+                    <div 
+                        ref={nodeRef}
+                        className='absolute h-20 w-20 z-10 m-1'
+                    >
+                        <div
+                            className='flex flex-col w-full h-full items-center justify-center text-center cursor-pointer'
+                        >
+                            <RecycleEmpty variant="32x32_4"/>
+                            <p className='App-shortcut-text-spacing'> Recycle Bin </p>
+                        </div>
+                    </div>
+                </Draggable>
+                <Draggable 
+                    nodeRef={nodeRef}
+                    bounds='parent'
+                    defaultPosition={{x: 80, y: 0}}
+                >
+                    <div 
+                        ref={nodeRef}
+                        className='absolute h-20 w-20 z-10 m-1'
+                    >
+                        <div
+                            className='flex flex-col w-full h-full items-center justify-center text-center cursor-pointer'
+                        >
+                            <img src={GithubImg} alt='Github Pixelated Image Icon' width={34} height={34}/>
+                            <p className='App-shortcut-text-spacing'> Github </p>
+                        </div>
+                    </div>
+                </Draggable>
+                <Draggable 
+                    nodeRef={nodeRef}
+                    bounds='parent'
+                    defaultPosition={{x: 80, y: 70}}
+                >
+                    <div 
+                        ref={nodeRef}
+                        className='absolute h-20 w-20 z-10 m-1'
+                    >
+                        <div
+                            className='flex flex-col w-full h-full items-center justify-center text-center cursor-pointer'
+                        >
+                            <img src={LinkedInImg} alt='Github Pixelated Image Icon' width={34} height={34}/>
+                            <p className='App-shortcut-text-spacing'> LinkedIn </p>
+                        </div>
+                    </div>
+                </Draggable>
             </div>
+
+            <TaskBar
+                className='App-taskBar-size'
+                list={
+                    <List>
+                        <List.Item icon={<ReaderClosed variant="32x32_4" />}>
+                            Local Disk (C:)
+                        </List.Item>
+                        <List.Item icon={<WindowsExplorer variant="32x32_4" />}>
+                            Windows Explorer
+                        </List.Item>
+                    </List>
+                }
+            >
+                
+            </TaskBar>
         </div>
-    )
+    );
 }
