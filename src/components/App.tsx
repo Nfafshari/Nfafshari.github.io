@@ -19,9 +19,11 @@ import WelcomeWindow from './welcomeWindow/welcomeWindow';
 
 export default function App() {
     {/* States */}
-    const [activeWindow, setActiveWindow] = useState<boolean>(true);
     const [crtFilter, setCrtFilter] = useState<'crt' | ''>('crt');
     const [crtFilterToggleState, setCrtFilterToggleState] = useState<boolean>(true);
+
+    const [activeWindow, setActiveWindow] = useState<boolean>(true);
+    const [showWelcomeWindow, setShowWelcomeWindow]  = useState<boolean>(true);
 
     {/* REFS FOR EACH DRAGGABLE ITEM */}
     const welcomeWindowRef = useRef(null);
@@ -67,6 +69,8 @@ export default function App() {
                     >
                         <WelcomeWindow 
                             activeWindow={activeWindow}
+                            showWindow={showWelcomeWindow}
+                            setShowWindow={setShowWelcomeWindow}
                         />
                     </div>
                 </Draggable>
@@ -82,6 +86,9 @@ export default function App() {
                     >
                         <div
                             className='flex flex-col w-full h-full items-center justify-center text-center cursor-pointer'
+                            onClick={() => {
+                                setShowWelcomeWindow(true)
+                            }}
                         >
                             <Earth variant="32x32_4"/>
                             <p className='App-shortcut-text-spacing'> Welcome! </p>
