@@ -56,7 +56,7 @@ export default function WelcomeWindow (props: WelcomeWindowProps) {
                                     My Name is Nathen Afshari. I'm from East Grand Forks, MN.
                                     <br/>
                                     <br/> I am currently a <span className='font-bold'>Senior</span> at the <a href='https://und.edu/' target='_blank'><span className='text-green-700 underline'>University of North Dakota</span></a> with a Bachelor's Degree in Computer Science.
-                                    <br/> I have a passion for software engineering; more specifically, software development, and full-stack development, and UI design.
+                                    <br/> I have a passion for software engineering; more specifically, software development, full-stack development, and UI design.
                                     <br/>
                                     <br/> I currently work for <a href='https://www.ideal-aerosmith.com/' target='_blank'><span className='text-orange-500 underline'>Ideal Aerosmith</span></a> as a <span className='font-bold'>Software Engineer Intern</span>  where I have gained lots of career expierence!
                                 </p>

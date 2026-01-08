@@ -57,6 +57,7 @@ export default function App() {
                 id='Drag-zone'
                 className='App-dragZone-size'
             >
+                {/********************** WINDOWS ************************/}
                 <Draggable 
                     nodeRef={welcomeWindowRef}
                     bounds='parent'
@@ -75,6 +76,25 @@ export default function App() {
                     </div>
                 </Draggable>
 
+
+                {/********************** SHORTCUT ICONS ************************/}
+                <Draggable 
+                    nodeRef={recycleIconRef}
+                    bounds='parent'
+                    defaultPosition={{x: 0, y: 500}}
+                >
+                    <div 
+                        ref={recycleIconRef}
+                        className='absolute h-20 w-20 z-9 m-1'
+                    >
+                        <div
+                            className='flex flex-col w-full h-full items-center justify-center text-center cursor-pointer'
+                        >
+                            <RecycleEmpty variant="32x32_4"/>
+                            <p className='App-shortcut-text-spacing'> Recycle Bin </p>
+                        </div>
+                    </div>
+                </Draggable>
                 <Draggable 
                     nodeRef={welcomeIconRef}
                     bounds='parent'
@@ -82,11 +102,11 @@ export default function App() {
                 >
                     <div 
                         ref={welcomeIconRef}
-                        className='absolute h-20 w-20 z-10 m-1'
+                        className='absolute h-20 w-20 z-15 m-1'
                     >
                         <div
                             className='flex flex-col w-full h-full items-center justify-center text-center cursor-pointer'
-                            onClick={() => {
+                            onDoubleClick={() => {
                                 setShowWelcomeWindow(true)
                             }}
                         >
@@ -102,7 +122,7 @@ export default function App() {
                 >
                     <div 
                         ref={experienceIconRef}
-                        className='absolute h-20 w-20 z-10 m-1'
+                        className='absolute h-20 w-20 z-15 m-1'
                     >
                         <div
                             className='flex flex-col w-full h-full items-center justify-center text-center cursor-pointer'
@@ -119,7 +139,7 @@ export default function App() {
                 >
                     <div 
                         ref={educationIconRef}
-                        className='absolute h-20 w-20 z-10 m-1'
+                        className='absolute h-20 w-20 z-15 m-1'
                     >
                         <div
                             className='flex flex-col w-full h-full items-center justify-center text-center cursor-pointer'
@@ -136,7 +156,7 @@ export default function App() {
                 >
                     <div 
                         ref={schoolProjIconRef}
-                        className='absolute h-20 w-20 z-10 m-1'
+                        className='absolute h-20 w-20 z-15 m-1'
                     >
                         <div
                             className='flex flex-col w-full h-full items-center justify-center text-center cursor-pointer'
@@ -153,30 +173,13 @@ export default function App() {
                 >
                     <div 
                         ref={hobbyProjIconRef}
-                        className='absolute h-20 w-20 z-10 m-1'
+                        className='absolute h-20 w-20 z-15 m-1'
                     >
                         <div
                             className='flex flex-col w-full h-full items-center justify-center text-center cursor-pointer'
                         >
                             <Mdisp321 variant="32x32_4"/>
                             <p className='App-shortcut-text-spacing'> Hobby Projects </p>
-                        </div>
-                    </div>
-                </Draggable>
-                <Draggable 
-                    nodeRef={recycleIconRef}
-                    bounds='parent'
-                    defaultPosition={{x: 0, y: 500}}
-                >
-                    <div 
-                        ref={recycleIconRef}
-                        className='absolute h-20 w-20 z-10 m-1'
-                    >
-                        <div
-                            className='flex flex-col w-full h-full items-center justify-center text-center cursor-pointer'
-                        >
-                            <RecycleEmpty variant="32x32_4"/>
-                            <p className='App-shortcut-text-spacing'> Recycle Bin </p>
                         </div>
                     </div>
                 </Draggable>
