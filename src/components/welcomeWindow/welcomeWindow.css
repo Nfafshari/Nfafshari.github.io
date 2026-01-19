@@ -12,7 +12,7 @@
     text-shadow: none;
 }
 
-span {
+.WelcomeWindow-span {
     font-size: 18px;
     font-family: monospace;
 }

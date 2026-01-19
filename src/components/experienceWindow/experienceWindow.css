@@ -1,0 +1,30 @@
+.ExperienceWindow-h1 {
+    text-shadow: none;
+    font-size: xx-large;
+}
+
+.ExperienceWindow-h2 {
+    text-shadow: none;
+    font-size: x-large;
+}
+
+.ExperienceWindow-p {
+    text-shadow: none;
+    font-size: large;
+    font-family: monospace;
+}
+
+.ExperienceWindow-page {
+    text-shadow: none;
+}
+
+.ExperienceWindow-span {
+    font-size: 18px;
+    font-family: monospace;
+}
+
+span {
+    font-family: monospace;
+    font-size: 14px;
+    margin: 2px !important;
+}

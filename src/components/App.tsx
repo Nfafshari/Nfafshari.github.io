@@ -22,7 +22,7 @@ import './app.css';
 
 export default function App() {
     {/* States */}
-    const [crtFilter, setCrtFilter] = useState<'crt' | ''>('crt');
+    const [crtFilter, setCrtFilter] = useState<'crt' | ''>('');
     const [crtFilterToggleState, setCrtFilterToggleState] = useState<boolean>(false);
 
     const [activeWindow, setActiveWindow] = useState<boolean>(true);
@@ -92,7 +92,7 @@ export default function App() {
                         <ExperienceWindow 
                             activeWindow={activeWindow}
                             showWindow={showExperienceWindow}
-                            setShowWindow={setShowWelcomeWindow}
+                            setShowWindow={setShowExperienceWindow}
                         />
                     </div>
                 </Draggable>
@@ -249,7 +249,7 @@ export default function App() {
                     onCrtToggleClick()
                 }}
             >
-                <span className='text-red-500 font-bold'>R</span><span className='text-green-600 font-bold'>G</span><span className='text-blue-600'>B</span>
+                <span className='text-red-500 text-xl font-sans font-bold'>R</span><span className='text-green-600 text-xl font-sans font-bold'>G</span><span className='text-blue-600 text-xl font-sans font-bold'>B</span>
             </Button>
 
             <TaskBar
