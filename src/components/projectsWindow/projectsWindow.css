@@ -1,0 +1,27 @@
+.ProjectsWindow-h1 {
+    text-shadow: none;
+    font-size: xx-large;
+}
+
+.ProjectsWindow-h2 {
+    text-shadow: none;
+    font-size: x-large;
+    font-family: sans-serif;
+}
+
+.ProjectsWindow-p {
+    text-shadow: none;
+    font-size: medium;
+    font-family: monospace;
+}
+
+.ProjectsWindow-span {
+    font-size: 18px;
+    font-family: monospace;
+}
+
+span {
+    font-family: monospace;
+    font-size: 14px;
+    margin: 2px !important;
+}

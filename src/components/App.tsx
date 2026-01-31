@@ -10,6 +10,7 @@ import Draggable from 'react-draggable';
 import WelcomeWindow from './welcomeWindow/welcomeWindow';
 import ExperienceWindow from './experienceWindow/experienceWindow';
 import EducationWindow from './educationWindow/educationWindow';
+import ProjectsWindow from './projectsWindow/projectsWindow';
 import HeadShotImg from '../assets/nathen_headshot.jpg';
 import WindowsCloudsImg from '../assets/windows_clouds.jpg';
 import LinkedInImg from '../assets/linkedin_pixel_logo_icon.png';
@@ -28,17 +29,20 @@ export default function App() {
     const [activeWindow, setActiveWindow] = useState<boolean>(true);
     const [showWelcomeWindow, setShowWelcomeWindow]  = useState<boolean>(false);
     const [showExperienceWindow, setShowExperienceWindow]  = useState<boolean>(false);
-    const [showEducationWindow, setShowEducationWindow]  = useState<boolean>(true);
+    const [showEducationWindow, setShowEducationWindow]  = useState<boolean>(false);
+    const [showProjectsWindow, setShowProjectsWindow] = useState<boolean>(true);
 
-    {/* REFS FOR EACH DRAGGABLE ITEM */}
+    // window refs
     const welcomeWindowRef = useRef(null);
     const experienceWindowRef = useRef(null);
     const educationWindowRef = useRef(null);
+    const projectsWindowRef = useRef(null);
+
+    // shortcut icon refs
     const welcomeIconRef = useRef(null);
     const educationIconRef = useRef(null);
     const experienceIconRef = useRef(null);
-    const schoolProjIconRef = useRef(null);
-    const hobbyProjIconRef = useRef(null);
+    const projectsIconRef = useRef(null);
     const recycleIconRef = useRef(null);
     const githubIconRef = useRef(null);
     const linkedInIconRef = useRef(null);
@@ -115,6 +119,23 @@ export default function App() {
                         />
                     </div>
                 </Draggable>
+                <Draggable 
+                    nodeRef={projectsWindowRef}
+                    bounds='parent'
+                    defaultPosition={{x: 650, y: 150}}
+                    handle='#Projects-titlebar'
+                >
+                    <div
+                        ref={projectsWindowRef}
+                        className='absolute inline-block z-20'
+                    >
+                        <ProjectsWindow 
+                            activeWindow={activeWindow}
+                            showWindow={showProjectsWindow}
+                            setShowWindow={setShowProjectsWindow}
+                        />
+                    </div>
+                </Draggable>
 
 
                 {/********************** SHORTCUT ICONS ************************/}
@@ -183,6 +204,9 @@ export default function App() {
                     <div 
                         ref={educationIconRef}
                         className='absolute h-20 w-20 z-15 m-1'
+                        onDoubleClick={() => {
+                            setShowEducationWindow(true)
+                        }}
                     >
                         <div
                             className='flex flex-col w-full h-full items-center justify-center text-center cursor-pointer'
@@ -193,36 +217,22 @@ export default function App() {
                     </div>
                 </Draggable>
                 <Draggable 
-                    nodeRef={schoolProjIconRef}
+                    nodeRef={projectsIconRef}
                     bounds='parent'
                     defaultPosition={{x: 0, y: 210}}
                 >
                     <div 
-                        ref={schoolProjIconRef}
+                        ref={projectsIconRef}
                         className='absolute h-20 w-20 z-15 m-1'
-                    >
-                        <div
-                            className='flex flex-col w-full h-full items-center justify-center text-center cursor-pointer'
-                        >
-                            <Wordpad variant="32x32_4"/>
-                            <p className='App-shortcut-text-spacing'> School Projects </p>
-                        </div>
-                    </div>
-                </Draggable>
-                <Draggable 
-                    nodeRef={hobbyProjIconRef}
-                    bounds='parent'
-                    defaultPosition={{x: 0, y: 280}}
-                >
-                    <div 
-                        ref={hobbyProjIconRef}
-                        className='absolute h-20 w-20 z-15 m-1'
+                        onDoubleClick={() => {
+                            setShowProjectsWindow(true)
+                        }}
                     >
                         <div
                             className='flex flex-col w-full h-full items-center justify-center text-center cursor-pointer'
                         >
                             <Mdisp321 variant="32x32_4"/>
-                            <p className='App-shortcut-text-spacing'> Hobby Projects </p>
+                            <p className='App-shortcut-text-spacing'> Projects </p>
                         </div>
                     </div>
                 </Draggable>
