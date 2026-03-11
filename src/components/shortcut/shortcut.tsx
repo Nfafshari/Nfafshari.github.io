@@ -30,7 +30,7 @@ export default function Shortcut ({
         >
             <div 
                 ref={shortcutRef}
-                className={`absolute h-20 w-20 m-1 ${isDragging ? 'z-50' : ''}`}
+                className={`absolute h-20 w-20 m-1 rounded-md hover:border-2 hover:border-sky-500/50 hover:bg-sky-300/50 ${isDragging ? 'z-50' : ''}`}
                 onDoubleClick={onDoubleClick}
             >
                 <div
